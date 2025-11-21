@@ -83,7 +83,7 @@ Notice: by default the cursor for all Styled Buttons is crHandPoint.
 | ![TStyledBindNavigator](./Images/StyledBindNavigator_128.png) | **TStyledBindNavigator** is a special "BindNavigator" component, with Styles (eg. Classic, Bootstrap, Angular, Basic-Color, SVG-Color), plus Button captions and better "move" icons in vertical mode. |
 | ![TStyledButtonGroup](./Images/BUTTON_GROUP_128.png) | **TStyledButtonGroup** is a special "ButtonGroup" component with Styles (eg. Classic, Bootstrap, Angular, Basic-Color, SVG-Color) plus ImagePosition, CaptionAlignment and Flat properties, for adding more controls to the appearance of Buttons.|
 | ![TStyledCategoryButtons](./Images/CATEGORY_BUTTONS_128.png) | **TStyledCategoryButtons** is a special "CategoryButtons" component with Styles (eg. Classic, Bootstrap, Angular, Basic-Color, SVG-Color) plus ImagePosition, CaptionAlignment and Flat properties, for adding more controls to the appearance of Buttons.|
-| ![TStyledTaskDialog](./Images/StyledTaskDialog_128.png) | **TStyledTaskDialog** is a special "TaskDialog" component (to replace MessageDlg and TaskDlg) with custom Button Captions and Icons. Using a special Form you can show a full customizable Dialog. Using Skia4Delpghi you can show animated dialogs!|
+| ![TStyledTaskDialog](./Images/StyledTaskDialog_128.png) | **TStyledTaskDialog** is a special "TaskDialog" component (to replace MessageDlg and TaskDlg) with custom Button Captions and Icons. Using a special Form you can show a full customizable Dialog. Using Skia4Delphi you can show animated dialogs!|
 
 ---
 

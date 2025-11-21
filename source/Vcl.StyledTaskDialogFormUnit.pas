@@ -313,6 +313,11 @@ var
 begin
   LHeight := RadioGroupPanel.Height;
   FRadioButtons := AValue;
+
+  // Clear existing radio buttons to prevent memory leak
+  for I := RadioGroupPanel.ControlCount - 1 downto 0 do
+    RadioGroupPanel.Controls[I].Free;
+
   LLastButton := nil;
   for I := 0 to FRadioButtons.Count -1 do
   begin
@@ -385,9 +390,9 @@ end;
 
 procedure TStyledTaskDialogForm.SetButtonsWidth(const AValue: Integer);
 begin
-  if FButtonsHeight <> AValue then
+  if FButtonsWidth <> AValue then
   begin
-    FButtonsHeight := AValue;
+    FButtonsWidth := AValue;
     UpdateButtonsSize;
   end;
 end;
@@ -405,7 +410,7 @@ procedure TStyledTaskDialogForm.SetCustomFooterIcon(const AValue: TIcon);
 begin
   if FCustomFooterIcon <> AValue then
   begin
-    FCustomMainIcon := AValue;
+    FCustomFooterIcon := AValue;
     LoadCustomFooterIcon(FCustomFooterIcon, FfooterIcon);
   end;
 end;
@@ -1150,6 +1155,8 @@ end;
 
 procedure TStyledTaskDialogForm.TextLabelLinkClick(Sender: TObject;
   const Link: string; LinkType: TSysLinkType);
+var
+  LResult: HINSTANCE;
 begin
   if (LinkType = sltURL) and Assigned(FTaskDialog.OnHyperlinkClicked) then
   begin
@@ -1157,7 +1164,12 @@ begin
       TStyledTaskDialog(FTaskDialog).DoOnHyperlinkClicked(Link)
   end
   else
-    ShellExecute(Self.Handle, 'open' , PChar(Link), nil, nil, SW_SHOW );
+  begin
+    LResult := ShellExecute(Self.Handle, 'open', PChar(Link), nil, nil, SW_SHOW);
+    // ShellExecute returns a value > 32 if successful, <= 32 if error
+    if LResult <= 32 then
+      ShowMessage(Format('Failed to open URL: %s (Error code: %d)', [Link, LResult]));
+  end;
 end;
 
 procedure TStyledTaskDialogForm.VerificationCheckBoxClick(Sender: TObject);
@@ -1229,11 +1241,11 @@ end;
 procedure TStyledTaskDialogForm.FormDestroy(Sender: TObject);
 begin
   inherited;
-  FCustomIcons[mtWarning].Free;
-  FCustomIcons[mtError].Free;
-  FCustomIcons[mtInformation].Free;
-  FCustomIcons[mtConfirmation].Free;
-  FCustomIcons[mtCustom].Free;
+  FreeAndNil(FCustomIcons[mtWarning]);
+  FreeAndNil(FCustomIcons[mtError]);
+  FreeAndNil(FCustomIcons[mtInformation]);
+  FreeAndNil(FCustomIcons[mtConfirmation]);
+  FreeAndNil(FCustomIcons[mtCustom]);
   FTaskDialog.OnExpanded := FTaskDialogExpanded;
 end;
 

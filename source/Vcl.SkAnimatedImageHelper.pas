@@ -312,7 +312,7 @@ begin
           RenderFrame(ASkCanvas, LRect, AProgress, AOpacity);
         end
         );
-        ACanvas.Draw(LTop, LLeft, LBitmap);
+        ACanvas.Draw(LLeft, LTop, LBitmap);
     finally
       LBitmap.Free;
     end;
