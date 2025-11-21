@@ -1,0 +1,49 @@
+package StyledComponentsFMX;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE ON}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE RELEASE}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'Ethea StyledComponents FMX for Delphi 11'}
+{$LIBSUFFIX 'D11'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  fmx,
+  dbrtl,
+  fmxase,
+  bindengine,
+  bindcomp;
+
+contains
+  FMX.StyledButton in '..\..\source_fmx\FMX.StyledButton.pas',
+  FMX.StyledToolbar in '..\..\source_fmx\FMX.StyledToolbar.pas',
+  FMX.StyledTaskDialog in '..\..\source_fmx\FMX.StyledTaskDialog.pas',
+  FMX.StyledButtonGroup in '..\..\source_fmx\FMX.StyledButtonGroup.pas',
+  FMX.StyledDbNavigator in '..\..\source_fmx\FMX.StyledDbNavigator.pas',
+  FMX.ButtonStyles in '..\..\source_fmx\FMX.ButtonStyles.pas';
+
+end.
